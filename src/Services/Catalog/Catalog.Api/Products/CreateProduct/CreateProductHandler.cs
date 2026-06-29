@@ -27,7 +27,7 @@
             documentSession.Store(product);
             await documentSession.SaveChangesAsync(cancellationToken);
 
-            return new CreateProductResult(Guid.NewGuid());
+            return new CreateProductResult(product.Id);
 
           
         }
