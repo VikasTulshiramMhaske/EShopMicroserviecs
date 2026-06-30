@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.CQRS
 {
-    public interface Icommand : Icommand<Unit>
+    public interface ICommand : ICommand<Unit>
     {
     }
-    public interface Icommand<out TResponse> : IRequest<TResponse>
+    public interface ICommand<out TResponse> : IRequest<TResponse>
     {
     }
 }

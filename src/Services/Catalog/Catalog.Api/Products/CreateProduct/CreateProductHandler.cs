@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Api.Products.CreateProduct
 {
     public record CreateProductCommand(string Name, List<string> Categories, string Description, string ImageFile, decimal Price)
-        : Icommand<CreateProductResult>;
+        : ICommand<CreateProductResult>;
     public record CreateProductResult(Guid Id);
 
     internal class CreateProductCommandHandler (IDocumentSession documentSession) : ICommandHandler<CreateProductCommand, CreateProductResult>
@@ -27,7 +27,7 @@
             documentSession.Store(product);
             await documentSession.SaveChangesAsync(cancellationToken);
 
-            return new CreateProductResult(Guid.NewGuid());
+            return new CreateProductResult(product.Id);
 
           
         }
